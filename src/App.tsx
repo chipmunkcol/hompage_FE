@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import "./pages/main/main.css";
+import "./sass/main.css";
 import land from "./images/land.png";
 import bridges from "./images/bridges.png";
 import dams from "./images/dams.png";
@@ -53,17 +53,19 @@ function App() {
             </div>
           </div>
 
-          <div className="safety-box">
-            <img src={bridges} width={240} height={296} />
-            <span>BRIDGES</span>
-          </div>
-          <div className="safety-box">
-            <img src={dams} width={240} height={296} />
-            <span>DAMS</span>
-          </div>
-          <div className="safety-box">
-            <img src={buildings} width={240} height={296} />
-            <span>BUILDINGS</span>
+          <div className="">
+            <div className="safety-box">
+              <img src={bridges} width={240} height={296} />
+              <span>BRIDGES</span>
+            </div>
+            <div className="safety-box">
+              <img src={dams} width={240} height={296} />
+              <span>DAMS</span>
+            </div>
+            <div className="safety-box">
+              <img src={buildings} width={240} height={296} />
+              <span>BUILDINGS</span>
+            </div>
           </div>
         </div>
       </div>
