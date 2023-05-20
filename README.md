@@ -9,6 +9,19 @@ display: grid;
 grid-templates-columns: 1fr 1fr;
 gap: 10px 20px (행별 10px 열별 20xp 떨어뜨려줌)
 
+nth-of-type 선택자
+ex)
+  ul {
+    width: 1200px;
+    display: grid;
+    grid-templates-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+
+  li:nth-of-type(3) {   // li 요소 grid 중 3 번째 요소를
+    grid-column: 1 / span 2;  // 2개의 열을 차지하게 해줌
+  }
+
 
 
 // 안내 문구 0.5s 후 뜨기
@@ -24,7 +37,7 @@ gap: 10px 20px (행별 10px 열별 20xp 떨어뜨려줌)
   border: 1px solid #cccccc;
   border-radius: 4px;
 
-  z-index: -1;
+  z-index: -1; // 이거 안해주면 hover 시에 뜨는 애만 hover 해도 뜸
   opacity: 0;
 }
 
