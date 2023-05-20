@@ -2,10 +2,16 @@
 
 ```
 box-sizing: border-box;
-object-fit;
+object-fit: cover / contain / fill;
 background: linear-gradient(to bottom, #f9f9f9, #f1f1f1);
 
-// 안내 문구 0.5s 후 뜨기 
+display: grid;
+grid-templates-columns: 1fr 1fr;
+gap: 10px 20px (행별 10px 열별 20xp 떨어뜨려줌)
+
+
+
+// 안내 문구 0.5s 후 뜨기
 .menu-left .btn.load::before {
   content: "파일 업로드";
   position: absolute;
@@ -17,7 +23,7 @@ background: linear-gradient(to bottom, #f9f9f9, #f1f1f1);
   padding: 7px;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  
+
   z-index: -1;
   opacity: 0;
 }
