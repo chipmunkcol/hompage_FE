@@ -78,3 +78,14 @@ KISS법칙
 
 (주의) 처음부터 클린코드를 작성하려하지말고 일단 코딩 후 리팩토링을 하자!
 ```
+
+4. JS
+
+```
+for 문
+const Arrays = [1,2,3]
+for (const array of Arrays) {
+  console.log(array);
+}
+
+```
