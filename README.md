@@ -97,25 +97,38 @@ for (const array of Arrays) {
 A. 제일 쉬운 JSON 
 JSON.parse(JSON.stringify(object));
 단점은 다른 방법에 비해 느리고 객체가 function일 경우 undefined로 처리됨.
+또, 날짜 객체나 정규 표현식 등의 복잡한 객체는 제대로 복사하지 못함.
 
 
 B. 재귀 함수를 구현한 복사
-function deepCopy(object) {
-  if (object === null || typeof object !== "object") {
-    return object;
+function deepCopy(obj) {
+  if (obj === null || typeof !== "object") {
+    return obj;
   }
-  // 객체인지 배열인지 판단
-  const copy = Array.isArray(object) ? [] : {};
- 
-  for (let key of Object.keys(object)) {
-    copy[key] = deepCopy(object[key]);
+
+  if (obj instanceof Array) {
+    const copyArray = [];
+    for (let i = 0; i < obj.length; i++) {
+      copyArray[i] = deepCopy(obj[i]);
+    }
+    return copyArray;
   }
- 
-  return copy;
+
+  if (obj instanceof Object) {
+    const copyObject = {};
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        copyObject[key] = deepCopy(obj[key]);
+      }
+    }
+    return copyObject;
+  }
 }
+
+const deepCopyArray = deepCopy(originalArray);
+const deepCopyObject = deepCopy(originalObject);
  
-const copy = deepCopy(object);
-단점은 어려움 custom 함수 만들어서 따로 빼놓고 사용하면 쓸만할듯
+단점은 어려움 그래도 custom 함수 만들어서 따로 빼놓고 사용하면 될듯! 
 
 C. Lodash 라이브러리 (라이브러리 최고..)
 const deepCopy = require("lodash.clonedeep"
