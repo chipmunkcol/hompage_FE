@@ -82,10 +82,43 @@ KISS법칙
 4. JS
 
 ```
-for 문
+(1) for 문
 const Arrays = [1,2,3]
 for (const array of Arrays) {
   console.log(array);
 }
+
+(2) 얕은복사, 깊은복사
+그동안 스프레드 연산자(...) 깊은 복사인줄 알았는데 아니었음.. 🥲
+껍데기는 깊은 복사가 되는데 2 depth 이상의 값은 얕은복사가 이뤄지니 주의하자:D
+
+=> 깊은 복사 하는 방법
+
+A. 제일 쉬운 JSON 
+JSON.parse(JSON.stringify(object));
+단점은 다른 방법에 비해 느리고 객체가 function일 경우 undefined로 처리됨.
+
+
+B. 재귀 함수를 구현한 복사
+function deepCopy(object) {
+  if (object === null || typeof object !== "object") {
+    return object;
+  }
+  // 객체인지 배열인지 판단
+  const copy = Array.isArray(object) ? [] : {};
+ 
+  for (let key of Object.keys(object)) {
+    copy[key] = deepCopy(object[key]);
+  }
+ 
+  return copy;
+}
+ 
+const copy = deepCopy(object);
+단점은 어려움 custom 함수 만들어서 따로 빼놓고 사용하면 쓸만할듯
+
+C. Lodash 라이브러리 (라이브러리 최고..)
+const deepCopy = require("lodash.clonedeep"
+const copy = deepCopy(object); // 역시 최고..b
 
 ```
